@@ -37,8 +37,7 @@ public class MessageSubscriber extends HttpServlet {
         // need to setClientID value, any string value you wish
         
         connection.setClientID("1");
-        
-      
+ 
         connection.start();
         
         Session session = connection.createSession(false,
@@ -99,7 +98,8 @@ public class MessageSubscriber extends HttpServlet {
 			//connection.close();
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println(e.toString());
 		}
         
 		
