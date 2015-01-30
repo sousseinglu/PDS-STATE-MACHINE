@@ -1,0 +1,71 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>State Machine Web Application</display-name>
+  <servlet>
+    <servlet-name>MessageSubscriber</servlet-name>
+    <servlet-class>view.MessageSubscriber</servlet-class>
+    <load-on-startup>1</load-on-startup>
+</servlet>
+  <servlet>
+  	<servlet-name>EntryServlet</servlet-name>
+  	<servlet-class>EntryServlet</servlet-class>
+  
+  </servlet>
+  <servlet>
+  	<servlet-name>MessageSubscriber1</servlet-name>
+  	<display-name>MessageSubscriber1</display-name>
+  	<description></description>
+  	<servlet-class>view.MessageSubscriber</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>DecodeXml</servlet-name>
+  	<display-name>DecodeXml</display-name>
+  	<description></description>
+  	<servlet-class>controller.DecodeXml</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<display-name>LoginServlet</display-name>
+  	<description></description>
+  	<servlet-class>controller.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>EncodeXml</servlet-name>
+  	<display-name>EncodeXml</display-name>
+  	<description></description>
+  	<servlet-class>controller.EncodeXml</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Publisher</servlet-name>
+  	<display-name>Publisher</display-name>
+  	<description></description>
+  	<servlet-class>controller.Publisher</servlet-class>
+  </servlet>
+  	<servlet-mapping>
+  		<servlet-name>EntryServlet</servlet-name>
+  		<url-pattern>/EntryServlet</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+  		<servlet-name>MessageSubscriber1</servlet-name>
+  		<url-pattern>/MessageSubscriber1</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+  		<servlet-name>DecodeXml</servlet-name>
+  		<url-pattern>/DecodeXml</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+  		<servlet-name>LoginServlet</servlet-name>
+  		<url-pattern>/LoginServlet</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+  		<servlet-name>EncodeXml</servlet-name>
+  		<url-pattern>/EncodeXml</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+  		<servlet-name>Publisher</servlet-name>
+  		<url-pattern>/Publisher</url-pattern>
+  	</servlet-mapping>
+</web-app>
