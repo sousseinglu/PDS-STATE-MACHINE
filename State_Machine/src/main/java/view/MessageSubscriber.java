@@ -12,6 +12,8 @@ import javax.jms.TextMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
+import model.User;
+
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 
@@ -46,9 +48,7 @@ public class MessageSubscriber extends HttpServlet {
         Destination queuePresentation = session.createQueue("fromPresentation");
         Destination queuePersistance = session.createQueue("fromPersistance");
         
-        
-        //need to use createDurableSubscriber() method instead of createConsumer() for topic
-        // MessageConsumer consumer = session.createConsumer(topic);
+      
         MessageConsumer consumerPresentation = session.createConsumer(queuePresentation);
         MessageConsumer consumerPersistance = session.createConsumer(queuePersistance);
 
@@ -62,6 +62,7 @@ public class MessageSubscriber extends HttpServlet {
                                 + textMessage.getText() + "'");
                         
                         //send message to couche persistance
+                        
                         new controller.Publisher().sendMessage("persistance", textMessage.getText());
                          
                     }

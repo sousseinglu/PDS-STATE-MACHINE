@@ -31,15 +31,16 @@ public class Publisher extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
+    
+    // sends message to a destination
+    // takes String destination and String message as param
     public void sendMessage(String destination, String msg){
     	try { 
     	 ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
          Connection connection = connectionFactory.createConnection();
          connection.start();
 
-         // JMS messages are sent and received using a Session. We will
-         // create here a non-transactional session object. If you want
-         // to use transactions you should set the first parameter to 'true'
+       
          Session session = connection.createSession(false,
                  Session.AUTO_ACKNOWLEDGE);
         
@@ -50,12 +51,10 @@ public class Publisher extends HttpServlet {
          MessageProducer producerPersistance = session.createProducer(queuePersistance);
          MessageProducer producerPresentation = session.createProducer(queuePresentation);
 
-         // We will send a small text message saying 'Hello'
-
          TextMessage message = session.createTextMessage();
 
          message.setText(msg);
-         // Here we are sending the message!
+         // Checks the destination and sends message
          if(destination.equals("persistance")){
         	 producerPersistance.send(message);
          }

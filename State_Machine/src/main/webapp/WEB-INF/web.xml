@@ -44,6 +44,18 @@
   	<description></description>
   	<servlet-class>controller.Publisher</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>XmlParser</servlet-name>
+  	<display-name>XmlParser</display-name>
+  	<description></description>
+  	<servlet-class>controller.XmlParser</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>XmlValidator</servlet-name>
+  	<display-name>XmlValidator</display-name>
+  	<description></description>
+  	<servlet-class>controller.XmlValidator</servlet-class>
+  </servlet>
   	<servlet-mapping>
   		<servlet-name>EntryServlet</servlet-name>
   		<url-pattern>/EntryServlet</url-pattern>
@@ -67,5 +79,13 @@
   	<servlet-mapping>
   		<servlet-name>Publisher</servlet-name>
   		<url-pattern>/Publisher</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+  		<servlet-name>XmlParser</servlet-name>
+  		<url-pattern>/XmlParser</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+  		<servlet-name>XmlValidator</servlet-name>
+  		<url-pattern>/XmlValidator</url-pattern>
   	</servlet-mapping>
 </web-app>

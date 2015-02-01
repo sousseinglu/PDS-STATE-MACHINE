@@ -8,4 +8,7 @@
     	</sequence>
     </complexType>
 
+
+
+    <element name="root" type="tns:User"></element>
 </schema>
