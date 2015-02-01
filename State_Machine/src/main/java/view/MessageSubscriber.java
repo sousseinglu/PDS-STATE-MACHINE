@@ -1,5 +1,7 @@
 package view;
 
+import java.rmi.RemoteException;
+
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -62,8 +64,13 @@ public class MessageSubscriber extends HttpServlet {
                                 + textMessage.getText() + "'");
                         
                         //send message to couche persistance
-                        
-                        new controller.Publisher().sendMessage("persistance", textMessage.getText());
+                        try {
+							new controller.Base().createStateMachine(textMessage.getText());
+						} catch (RemoteException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                        //new controller.Publisher().sendMessage("persistance", textMessage.getText());
                          
                     }
                 } catch (JMSException e) {
