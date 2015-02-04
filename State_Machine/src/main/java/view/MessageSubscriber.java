@@ -63,14 +63,8 @@ public class MessageSubscriber extends HttpServlet {
                         System.out.println("Received message"
                                 + textMessage.getText() + "'");
                         
-                        //send message to couche persistance
-                        try {
-							new controller.Base().createStateMachine(textMessage.getText());
-						} catch (RemoteException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-                        //new controller.Publisher().sendMessage("persistance", textMessage.getText());
+                        //send message to couche persistance 
+                        new controller.Publisher().sendMessage("persistance", textMessage.getText());
                          
                     }
                 } catch (JMSException e) {
