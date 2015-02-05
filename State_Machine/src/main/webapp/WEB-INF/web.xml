@@ -20,6 +20,12 @@
   	<description></description>
   	<servlet-class>controller.Publisher</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>EntryServlet2</servlet-name>
+  	<display-name>EntryServlet2</display-name>
+  	<description></description>
+  	<servlet-class>EntryServlet2</servlet-class>
+  </servlet>
 
   
   	<servlet-mapping>
@@ -30,6 +36,10 @@
   	<servlet-mapping>
   		<servlet-name>Publisher</servlet-name>
   		<url-pattern>/Publisher</url-pattern>
+  	</servlet-mapping>
+  	<servlet-mapping>
+  		<servlet-name>EntryServlet2</servlet-name>
+  		<url-pattern>/EntryServlet2</url-pattern>
   	</servlet-mapping>
   	
 </web-app>

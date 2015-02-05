@@ -17,7 +17,7 @@ import org.apache.activemq.ActiveMQConnectionFactory;
  */
 public class Publisher extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;   
+    private static String url = "tcp://localhost:61616";   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -51,11 +51,13 @@ public class Publisher extends HttpServlet {
          // Checks the destination and sends message
          if(destination.equals("persistance")){
         	 producerPersistance.send(message);
+        	 System.out.println("Sent message to persistance'" + message.getText() + "'");
          }
          else if(destination.equals("presentation")){
         	 producerPresentation.send(message);
+        	 System.out.println("Sent message to presentation '" + message.getText() + "'");
          }
-         System.out.println("Sent message '" + message.getText() + "'");
+         
 
          
 			connection.close();
