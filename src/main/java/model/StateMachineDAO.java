@@ -11,10 +11,13 @@ public class StateMachineDAO {
 	       try {
 	    	   ConnexionDAO cd = new ConnexionDAO();
 	           cx = cd.getConnexion();
-	           st = cx.prepareStatement("insert into machine_a_etat(nomMachine_a_etat, utilisateur) values (?,?)");
+	           String requete = "insert into machine_a_etat(nomMachine_a_etat, utilisateur) values (?,?)";
+	           Statement statement = cx.createStatement();
+	           st = cx.prepareStatement(requete);
 	           st.setString(1, nomMachine);
 	           st.setString(2, user);
-	           rs = st.executeQuery();
+	           st.executeUpdate();
+	           System.out.println("ajout OK !");
 	       } catch (Exception e) {
 	           throw new RuntimeException(e);
 	       } finally {
@@ -24,5 +27,9 @@ public class StateMachineDAO {
 	       }
 	       
 	   }
-
+	   
+	   public static void main(String[] args) {
+		   StateMachineDAO smd = new StateMachineDAO();
+		   smd.createStateMachine("test", "fred");
+	   }
 }
