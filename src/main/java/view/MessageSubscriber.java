@@ -15,7 +15,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 
+
 import org.apache.activemq.ActiveMQConnectionFactory;
+
+import controller.StateMachineCreation;
 
 
 
@@ -63,7 +66,11 @@ public class MessageSubscriber extends HttpServlet {
                                 + textMessage.getText() + "'");
                         
                         //send message to couche persistance 
-                        new controller.Publisher().sendMessage("persistance", textMessage.getText());
+                       // new controller.Publisher().sendMessage("persistance", textMessage.getText());
+                        StateMachineCreation sm = new StateMachineCreation(); 
+                        sm.setIdCorrelation(message.getJMSCorrelationID());
+                        sm.setMessage(textMessage.getText());
+                        
                          
                     }
                 } catch (JMSException e) {

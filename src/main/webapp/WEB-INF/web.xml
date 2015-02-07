@@ -9,5 +9,16 @@
     <servlet-class>view.MessageSubscriber</servlet-class>
     <load-on-startup>1</load-on-startup>
 </servlet>
+  <servlet>
+  	<servlet-name>StateMachineCreation</servlet-name>
+  	<display-name>StateMachineCreation</display-name>
+  	<description></description>
+  	<servlet-class>controller.StateMachineCreation</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>StateMachineCreation</servlet-name>
+  	<url-pattern>/StateMachineCreation</url-pattern>
+  </servlet-mapping>
+
 
 </web-app>

@@ -1,3 +1,7 @@
+package RMI;
+
+import java.rmi.server.UnicastRemoteObject;
+
 import com.mysql.jdbc.BalanceStrategy;
 
 import model;

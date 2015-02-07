@@ -1,6 +1,8 @@
-package model;
+package RMI;
 
 import java.sql.*;
+
+import model.ConnexionDAO;
 
 public class StateMachineDAO {
 	
