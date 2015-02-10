@@ -2,7 +2,7 @@ package RMI;
 
 import java.sql.*;
 
-import model.ConnexionDAO;
+import metier.ModelConnexionDAO;
 
 public class StateMachineDAO {
 	
@@ -11,7 +11,7 @@ public class StateMachineDAO {
 	       PreparedStatement st = null;
 	       ResultSet rs = null;
 	       try {
-	    	   ConnexionDAO cd = new ConnexionDAO();
+	    	   ModelConnexionDAO cd = new ModelConnexionDAO();
 	           cx = cd.getConnexion();
 	           String requete = "insert into machine_a_etat(nomMachine_a_etat, utilisateur) values (?,?)";
 	           Statement statement = cx.createStatement();

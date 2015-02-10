@@ -1,4 +1,4 @@
-package controller;
+package metier;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
@@ -15,13 +15,13 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 /**
  * Servlet implementation class Publisher
  */
-public class Publisher extends HttpServlet {
+public class ControllerPublisher extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static String url = "tcp://localhost:61616";   
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Publisher() {
+    public ControllerPublisher() {
         super();
         // TODO Auto-generated constructor stub
     }
