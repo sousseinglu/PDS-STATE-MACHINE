@@ -2,7 +2,7 @@ package RMI;
 
 import java.sql.*;
 
-import metier.ModelConnexionDAO;
+import persistance.ModelConnexionDAO;
 
 public class StateMachineDAO {
 	
