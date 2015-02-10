@@ -1,10 +1,10 @@
-package model;
+package metier;
 import javax.jms.*;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-public class Producer {
+public class ModelProducer {
 
     private static String url = ActiveMQConnection.DEFAULT_BROKER_URL;
 

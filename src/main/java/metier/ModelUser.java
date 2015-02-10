@@ -6,7 +6,7 @@
 //
 
 
-package model;
+package metier;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
     "id",
     "password"
 })
-public class User {
+public class ModelUser {
 
     @XmlElement(name = "Id", required = true)
     protected String id;

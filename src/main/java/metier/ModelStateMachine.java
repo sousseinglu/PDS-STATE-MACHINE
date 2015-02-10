@@ -1,11 +1,11 @@
-package model;
+package metier;
 
-public class StateMachine {
+public class ModelStateMachine {
 	private int id;
 	private String nom;
-	private User utilisateur;
+	private ModelUser utilisateur;
 	
-	public StateMachine(int id, String nom, User utilisateur){
+	public ModelStateMachine(int id, String nom, ModelUser utilisateur){
 		this.id = id;
 		this.nom = nom;
 		this.utilisateur = utilisateur;
@@ -27,11 +27,11 @@ public class StateMachine {
 		this.nom = nom;
 	}
 	
-	public User getUtilisateur() {
+	public ModelUser getUtilisateur() {
 		return utilisateur;
 	}
 	
-	public void setUtilisateur(User utilisateur) {
+	public void setUtilisateur(ModelUser utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 }

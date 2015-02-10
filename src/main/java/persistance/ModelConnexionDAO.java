@@ -1,9 +1,9 @@
-package model;
+package persistance;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class ConnexionDAO  {
+public class ModelConnexionDAO  {
 
    @SuppressWarnings("unused")
 public Connection getConnexion() throws Exception {

@@ -1,4 +1,4 @@
-package controller;
+package metier;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class StateMachineCreation
  */
-public class StateMachineCreation extends HttpServlet {
+public class ControllerStateMachineCreation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private String idCorrel = null;
     private String message = null;
@@ -24,7 +24,7 @@ public class StateMachineCreation extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StateMachineCreation() {
+    public ControllerStateMachineCreation() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,16 +34,16 @@ public class StateMachineCreation extends HttpServlet {
     }
     public void setMessage(String message){
     	this.message = message;
+    	new ControllerXml().validateAndDecod("presentation" , message);
     }
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected synchronized void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		BufferedReader s = new BufferedReader(new InputStreamReader(
-				request.getInputStream()));
-		message = s.readLine();
-		String from = s.readLine();
+		//String from  = request.getParameter("from");
+		
+		String from = "presentation";
 		
 		
 		messageList.put(idCorrel, message);
@@ -52,9 +52,11 @@ public class StateMachineCreation extends HttpServlet {
 			    String cle = entry.getKey();
 			    String valeur = entry.getValue();
 			    if(idCorrel.equals(cle)){
-			    	new Xml().validateAndDecod(from , valeur);
+			    	//new ControllerXml().validateAndDecod(from , valeur);
+			    	
+			    	//todo call rmi method to create state machine
 			    }
-			    // traitements
+			    
 			}
 		}
 		

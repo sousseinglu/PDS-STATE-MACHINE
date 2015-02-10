@@ -1,4 +1,4 @@
-package view;
+package metier;
 
 import java.rmi.RemoteException;
 
@@ -16,16 +16,16 @@ import javax.servlet.http.HttpServlet;
 
 
 
-import org.apache.activemq.ActiveMQConnectionFactory;
 
-import controller.StateMachineCreation;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
 
 
 
 /**
  * Servlet implementation class MessageSubscriber
  */
-public class MessageSubscriber extends HttpServlet {
+public class ViewMessageSubscriber extends HttpServlet {
 	/**
 	 * 
 	 */
@@ -67,7 +67,7 @@ public class MessageSubscriber extends HttpServlet {
                         
                         //send message to couche persistance 
                        // new controller.Publisher().sendMessage("persistance", textMessage.getText());
-                        StateMachineCreation sm = new StateMachineCreation(); 
+                        ControllerStateMachineCreation sm = new ControllerStateMachineCreation(); 
                         sm.setIdCorrelation(message.getJMSCorrelationID());
                         sm.setMessage(textMessage.getText());
                         
@@ -90,7 +90,7 @@ public class MessageSubscriber extends HttpServlet {
                                 + textMessage.getText() + "'");
                         
                         //send message to couche persistance
-                        new controller.Publisher().sendMessage("presentation", textMessage.getText());
+                        new metier.ControllerPublisher().sendMessage("presentation", textMessage.getText());
                          
                     }
                 } catch (JMSException e) {
