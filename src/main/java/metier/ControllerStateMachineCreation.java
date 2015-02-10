@@ -41,10 +41,9 @@ public class ControllerStateMachineCreation extends HttpServlet {
 	 */
 	protected synchronized void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		BufferedReader s = new BufferedReader(new InputStreamReader(
-				request.getInputStream()));
+		//String from  = request.getParameter("from");
 		
-		String from = s.readLine();
+		String from = "presentation";
 		
 		
 		messageList.put(idCorrel, message);
@@ -55,7 +54,7 @@ public class ControllerStateMachineCreation extends HttpServlet {
 			    if(idCorrel.equals(cle)){
 			    	//new ControllerXml().validateAndDecod(from , valeur);
 			    	
-			    	// todo call rmi method to create state machine
+			    	//todo call rmi method to create state machine
 			    }
 			    
 			}
