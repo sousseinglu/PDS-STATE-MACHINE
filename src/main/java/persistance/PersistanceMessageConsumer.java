@@ -15,7 +15,7 @@ import metier.ControllerStateMachineCreation;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
-public class PersistanceMessage {
+public class PersistanceMessageConsumer {
 	/**
 	 * 
 	 */
