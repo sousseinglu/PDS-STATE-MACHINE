@@ -34,7 +34,8 @@ public class ControllerStateMachineCreation extends HttpServlet {
     }
     public void setMessage(String message){
     	this.message = message;
-    	new ControllerXml().validateAndDecod("presentation" , message);
+    	//new ControllerXml().validateAndDecod("presentation" , message);
+    	new ControllerXml().encodeXml(message);
     }
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
