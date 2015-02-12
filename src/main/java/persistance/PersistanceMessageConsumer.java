@@ -23,7 +23,7 @@ public class PersistanceMessageConsumer {
 	
 	// URL of the JMS server
     private static String url = "tcp://localhost:61616";
-	public void init() throws ServletException
+	public void init()
     {
 		// Getting JMS connection from the server
 		try {
@@ -42,31 +42,7 @@ public class PersistanceMessageConsumer {
 			Destination queueMetier = session.createQueue("fromMetier");
 
 			MessageConsumer consumerMetier = session.createConsumer(queueMetier);
-
-			MessageListener listnerPresentation = new MessageListener() {
-				public void onMessage(Message message) {
-					try {
-						if (message instanceof TextMessage) {
-
-							TextMessage textMessage = (TextMessage) message;
-							System.out.println("Received message"
-									+ textMessage.getText() + "'");
-
-							//send message to couche persistance 
-							// new controller.Publisher().sendMessage("persistance", textMessage.getText());
-							ControllerStateMachineCreation sm = new ControllerStateMachineCreation(); 
-							sm.setIdCorrelation(message.getJMSCorrelationID());
-							sm.setMessage(textMessage.getText());
-
-
-						}
-					} catch (JMSException e) {
-						System.out.println("Caught:" + e);
-						e.printStackTrace();
-					}
-				}
-			};
-
+			
 			MessageListener listnerMetier = new MessageListener() {
 				public void onMessage(Message message) {
 					try {
