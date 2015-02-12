@@ -1,5 +1,8 @@
 package metier;
 
+
+import generatedClasses.*;
+
 import java.io.File;
 import java.io.StringWriter;
 
@@ -12,6 +15,9 @@ import javax.xml.namespace.QName;
 public class ControllerXml {
 	
 	public void validateAndDecod(String from, String xml){
+		
+		
+		
 		ModelUser user = new ModelUser();
 		user.setId("Muthu");
 		user.setPassword("pass");
@@ -42,6 +48,10 @@ public class ControllerXml {
 		}
 		
 		
+		
+	}
+	
+	public void encodeXml(String xml){
 		
 	}
 

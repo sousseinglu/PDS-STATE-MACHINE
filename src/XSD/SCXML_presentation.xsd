@@ -10,7 +10,6 @@
    </xsd:sequence>
    <xsd:attribute name="version" type="xsd:string" fixed="1.0" />
    <xsd:attribute name="initialstate" type="xsd:IDREF" use="required" />
-   <xsd:attribute name="datamodel" type="xsd:NMTOKEN" default="null" use="optional"/>
   </xsd:complexType>
  </xsd:element>
  
@@ -29,7 +28,7 @@
    </xsd:sequence>
    <xsd:attribute name="src" type="xsd:anyURI" />
    <xsd:attribute name="expr" type="xsd:string" />
-   <xsd:attribute name="name" type="xsd:NMTOKEN" use="required" />
+   <xsd:attribute name="id" type="xsd:ID" use="required" />
   </xsd:complexType>
  </xsd:element>
  
@@ -216,7 +215,9 @@
 		</xsd:complexType>
 	</xsd:element>
 	<xsd:element name="script">
-		<xsd:complexType mixed="true"></xsd:complexType>
+		<xsd:complexType mixed="true">
+			<xsd:attribute name="src" type="xsd:anyURI"></xsd:attribute>
+		</xsd:complexType>
 	</xsd:element>
 	<xsd:simpleType name="targettype">
 		<xsd:restriction base="xsd:string">

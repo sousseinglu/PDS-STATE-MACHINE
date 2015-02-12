@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scxml initialstate="off" 
+	   xmlns="http://www.w3.org/2005/07/scxml" 
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	   xsi:schemaLocation="http://www.w3.org/2005/07/scxml SCXML_presentation.xsd ">
+  <datamodel>
+  	<data id="timer" expr="0"></data>
+  </datamodel>
+  
+  <state id="off">
+  	<transition event="timer.on" target="on">
+  		<assign location="timer" expr="timer + 1"></assign>
+  	</transition>
+  </state>
+	
+  <state id="on">
+  	<transition event="timer.off" target="off"></transition>
+  	<transition event="timer.reset" target="off">
+  		<assign location="timer" expr="0"></assign>
+  	</transition>
+  </state>
+</scxml>
