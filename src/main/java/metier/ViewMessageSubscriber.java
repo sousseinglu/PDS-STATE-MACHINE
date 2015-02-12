@@ -35,8 +35,10 @@ public class ViewMessageSubscriber extends HttpServlet {
     private static String url = "tcp://localhost:61616";
 	public void init() throws ServletException
     {
-        // Getting JMS connection from the server
+        
+		// Getting JMS connection from the server
 		try {
+	    
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
         Connection connection = connectionFactory.createConnection();
 
@@ -62,14 +64,14 @@ public class ViewMessageSubscriber extends HttpServlet {
                     if (message instanceof TextMessage) {
                     	
                         TextMessage textMessage = (TextMessage) message;
-                        System.out.println("Received message"
-                                + textMessage.getText() + "'");
+                        System.out.println("Couche metier dit: Received message from presentation");
                         
                         //send message to couche persistance 
-                       // new controller.Publisher().sendMessage("persistance", textMessage.getText());
-                        ControllerStateMachineCreation sm = new ControllerStateMachineCreation(); 
+                       new metier.ControllerPublisher().sendMessage("persistance", textMessage.getText());
+                        
+                       /*ControllerStateMachineCreation sm = new ControllerStateMachineCreation(); 
                         sm.setIdCorrelation(message.getJMSCorrelationID());
-                        sm.setMessage(textMessage.getText());
+                        sm.setMessage(textMessage.getText());*/
                         
                          
                     }
@@ -86,8 +88,7 @@ public class ViewMessageSubscriber extends HttpServlet {
                     if (message instanceof TextMessage) {
                     	
                         TextMessage textMessage = (TextMessage) message;
-                        System.out.println("Received message"
-                                + textMessage.getText() + "'");
+                        System.out.println("Couche metier dit: Received message from persistance");
                         
                         //send message to couche persistance
                         new metier.ControllerPublisher().sendMessage("presentation", textMessage.getText());

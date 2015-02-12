@@ -25,12 +25,12 @@ public class PersistanceMessageProducer {
 			connection = factory.createConnection();
 			connection.start();
 			session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
-			queueMetier = session.createQueue("SAMPLEQUEUE");
+			queueMetier = session.createQueue("fromPersistance");
 			producerMetier = session.createProducer(queueMetier);
 			TextMessage message = session.createTextMessage();
 			message.setText(contentMessage);
 			producerMetier.send(message);
-			System.out.println("Sent: " + message.getText());
+			System.out.println("Couche persistance dit: Sent message to metier");
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}

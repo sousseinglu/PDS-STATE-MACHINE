@@ -32,29 +32,23 @@ public class PersistanceMessageConsumer {
 
 			// need to setClientID value, any string value you wish
 
-			connection.setClientID("1");
+			connection.setClientID("2");
 
 			connection.start();
 
 			Session session = connection.createSession(false,
 					Session.AUTO_ACKNOWLEDGE);
 
-			Destination queueMetier = session.createQueue("fromMetier");
+			Destination queueMetier = session.createQueue("testpdsPersistance");
 
 			MessageConsumer consumerMetier = session.createConsumer(queueMetier);
 			
 			MessageListener listnerMetier = new MessageListener() {
 				public void onMessage(Message message) {
-					try {
-						if (message instanceof TextMessage) {
+					if (message instanceof TextMessage) {
 
-							TextMessage textMessage = (TextMessage) message;
-							System.out.println("Received message"
-									+ textMessage.getText() + "'");
-						}
-					} catch (JMSException e) {
-						System.out.println("Caught:" + e);
-						e.printStackTrace();
+						TextMessage textMessage = (TextMessage) message;
+						System.out.println("Couche persistance dit: Received message from metier");
 					}
 				}
 			};

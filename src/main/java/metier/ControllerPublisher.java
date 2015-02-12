@@ -51,16 +51,17 @@ public class ControllerPublisher extends HttpServlet {
          // Checks the destination and sends message
          if(destination.equals("persistance")){
         	 producerPersistance.send(message);
-        	 System.out.println("Sent message to persistance'" + message.getText() + "'");
+        	 System.out.println("Couche metier dit: Sent message to persistance");
          }
          else if(destination.equals("presentation")){
         	 producerPresentation.send(message);
-        	 System.out.println("Sent message to presentation '" + message.getText() + "'");
+        	 System.out.println("Couche metier dit: Sent message to presentation");
          }
          
 
          
 			connection.close();
+			new persistance.PersistanceMessageConsumer().init();
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
