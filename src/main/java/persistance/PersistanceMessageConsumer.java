@@ -1,8 +1,5 @@
 package persistance;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
@@ -12,9 +9,6 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletException;
 
 import metier.ControllerStateMachineCreation;
@@ -25,22 +19,14 @@ public class PersistanceMessageConsumer {
 	/**
 	 * 
 	 */
-	Context ctx;
 	private static final long serialVersionUID = 1L;
-
+	
 	// URL of the JMS server
-	private static String url = "tcp://localhost:61616";
-	@SuppressWarnings("unchecked")
-	public void init() throws NamingException
-	{
+    private static String url = "tcp://localhost:61616";
+	public void init()
+    {
 		// Getting JMS connection from the server
-		try {		
-			@SuppressWarnings("rawtypes")
-			Hashtable env = new Hashtable();
-			env.put(Context.INITIAL_CONTEXT_FACTORY, 
-			    "com.sun.jndi.fscontext.RefFSContextFactory");	
-			ctx = new InitialContext(env);
-			
+		try {
 			ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(url);
 			Connection connection = connectionFactory.createConnection();
 
@@ -56,21 +42,19 @@ public class PersistanceMessageConsumer {
 			Destination queueMetier = session.createQueue("testpdsPersistance");
 
 			MessageConsumer consumerMetier = session.createConsumer(queueMetier);
-
+			
 			MessageListener listnerMetier = new MessageListener() {
 				public void onMessage(Message message) {
-					try {
-						if (message instanceof TextMessage) {
-							TextMessage textMessage = (TextMessage) message;
-							ctx.bind(message.getJMSCorrelationID(), textMessage);
-							System.out.println("Couche persistance dit: Received message from metier");
+					if (message instanceof TextMessage) {
+
+						TextMessage textMessage = (TextMessage) message;
+						System.out.println("Couche persistance dit: Received message from metier \n");
+						try {
+							System.out.println(textMessage.getText());
+						} catch (JMSException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
-					} catch (JMSException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (NamingException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
 				}
 			};

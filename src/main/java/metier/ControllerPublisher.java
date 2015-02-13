@@ -7,7 +7,6 @@ import javax.jms.JMSException;
 import javax.jms.MessageProducer;
 import javax.jms.Session;
 import javax.jms.TextMessage;
-import javax.naming.NamingException;
 import javax.servlet.http.HttpServlet;
 
 import org.apache.activemq.ActiveMQConnection;
@@ -62,12 +61,7 @@ public class ControllerPublisher extends HttpServlet {
 
          
 			connection.close();
-			try {
-				new persistance.PersistanceMessageConsumer().init();
-			} catch (NamingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			new persistance.PersistanceMessageConsumer().init();
 		} catch (JMSException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -15,8 +15,8 @@ public class StateMachineDAOExportee extends UnicastRemoteObject implements Stat
 
 	private StateMachineDAO st;
 	
-	  public void createStateMachine(String idCorrelation) {
-		  st.createStateMachine(idCorrelation);
+	  public void createStateMachine(String nomMachine, String user) {
+		  st.createStateMachine(nomMachine, user);
 	   }
 
 }

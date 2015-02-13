@@ -15,9 +15,19 @@
   	<description></description>
   	<servlet-class>metier.ControllerStateMachineCreation</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>TestProducerPresentation</servlet-name>
+  	<display-name>TestProducerPresentation</display-name>
+  	<description></description>
+  	<servlet-class>metier.TestProducerPresentation</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>StateMachineCreation</servlet-name>
-  	<url-pattern>/StateMachineCreation</url-pattern>
+  	<url-pattern>/ControllerStateMachineCreation</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>TestProducerPresentation</servlet-name>
+  	<url-pattern>/TestProducerPresentation</url-pattern>
   </servlet-mapping>
 
 

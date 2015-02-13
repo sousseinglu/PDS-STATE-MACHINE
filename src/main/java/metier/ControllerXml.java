@@ -19,31 +19,33 @@ import javax.xml.stream.XMLStreamReader;
 
 public class ControllerXml {
 	
-	public void validateAndDecod(String from, String xml){
+	public void decodeAndSendXML(String from, String xml){
 		
 		
 		
-		ModelUser user = new ModelUser();
-		user.setId("Muthu");
-		user.setPassword("pass");
+		Scxml scxml = new Scxml();
+		State state = new State();
+		state.setId("s1");
+		scxml.setInitialstate(state);
 		
 		//ModelStateMachine sm = new ModelStateMachine(1, "statemachine1", user);
 		//new ControllerPublisher().sendMessage("persistance", xml);
 	try {
 		//File file = new File("C:\\file.xml");
-		JAXBContext jaxbContext = JAXBContext.newInstance(ModelUser.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(Scxml.class);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 		
 		StringWriter sw = new StringWriter();
 		jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-		//jaxbMarshaller.marshal(sm, file);
+		jaxbMarshaller.marshal(scxml, sw);
 		
-		QName qName = new QName("test.pds.namespace", "user");
-		JAXBElement<ModelUser> root = new JAXBElement<ModelUser>(qName, ModelUser.class, user);
-        jaxbMarshaller.marshal(root, sw);
+		/*QName qName = new QName("test.pds.namespace", "user");
+		JAXBElement<Scxml> root = new JAXBElement<Scxml>(qName, Scxml.class, scxml);
+        jaxbMarshaller.marshal(root, sw);*/
         
 		//jaxbMarshaller.marshal(user, sw);
 		//System.out.println(sw.toString());
+        
 		new ControllerPublisher().sendMessage("persistance", sw.toString());
 		
 		

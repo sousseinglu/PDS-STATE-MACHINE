@@ -113,8 +113,6 @@
 				
 			</xsd:choice>
 			<xsd:attribute name="id" type="xsd:ID" use="required" />
-			<xsd:attribute name="src" type="xsd:anyURI" />
-			<xsd:attribute name="task" type="xsd:boolean" />
 		</xsd:complexType>
 	</xsd:element>
 	<xsd:element name="history">
