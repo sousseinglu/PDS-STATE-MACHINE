@@ -4,12 +4,16 @@
  
  <xsd:element name="scxml">
   <xsd:complexType>
-   <xsd:sequence>
-    <xsd:element ref="datamodel" minOccurs="0" maxOccurs="1" />
-    <xsd:element ref="state" minOccurs="1" maxOccurs="unbounded" />
-   </xsd:sequence>
-   <xsd:attribute name="version" type="xsd:string" fixed="1.0" />
-   <xsd:attribute name="initialstate" type="xsd:IDREF" use="required" />
+  	<xsd:sequence>
+  		<xsd:element ref="datamodel" minOccurs="0" maxOccurs="1" />
+  		<xsd:element ref="state" minOccurs="1" maxOccurs="unbounded" />
+		<xsd:element ref="user" minOccurs="1" maxOccurs="unbounded" />
+  		
+  	</xsd:sequence>
+  	<xsd:attribute name="version" type="xsd:string" fixed="1.0" />
+  	<xsd:attribute name="initialstate" type="xsd:IDREF" use="required" />
+  	<xsd:attribute name="stateMachineName" type="xsd:string"></xsd:attribute>
+  	<xsd:attribute name="userId" type="xsd:IDREF" use="required"></xsd:attribute>
   </xsd:complexType>
  </xsd:element>
  
@@ -50,6 +54,7 @@
    <xsd:attribute name="initial" type="xsd:IDREFS" />  
   </xsd:complexType>
  </xsd:element>
+ 
  
  <xsd:element name="initial">
   <xsd:complexType>
@@ -224,4 +229,10 @@
 		</xsd:restriction>
 	</xsd:simpleType> 
 
+<xsd:element name="user">
+  <xsd:complexType>   
+   <xsd:attribute name="id" type="xsd:ID" use="required" />
+   <xsd:attribute name="password" type="xsd:string" use="required" />  
+  </xsd:complexType>
+ </xsd:element>
 </xsd:schema>

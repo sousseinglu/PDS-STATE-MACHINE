@@ -19,14 +19,19 @@ import javax.xml.stream.XMLStreamReader;
 
 public class ControllerXml {
 	
-	public void decodeAndSendXML(String from, String xml){
+	public void decodeAndSendXML(String from, String xml, String action, final String idCorell){
 		
 		
 		
 		Scxml scxml = new Scxml();
 		State state = new State();
+		User user = new User();
+		user.setId("Muthu");
+		user.setPassword("pass");
 		state.setId("s1");
+		scxml.setStateMachineName("testStateMachine");
 		scxml.setInitialstate(state);
+		scxml.setUserId(user);
 		
 		//ModelStateMachine sm = new ModelStateMachine(1, "statemachine1", user);
 		//new ControllerPublisher().sendMessage("persistance", xml);
@@ -47,6 +52,17 @@ public class ControllerXml {
 		//System.out.println(sw.toString());
         
 		new ControllerPublisher().sendMessage("persistance", sw.toString());
+		if(action.equalsIgnoreCase("createStateMachine")){
+			Thread stateMachineCreationTask = new Thread(new Runnable() {
+				
+				public void run() {
+					// TODO Auto-generated method stub
+					new RMI.ClientRMI().createStateMachine(idCorell);
+				}
+			});
+			stateMachineCreationTask.start();
+		}
+	
 		
 		
 	} catch (JAXBException e) {
