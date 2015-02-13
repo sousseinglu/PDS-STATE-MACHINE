@@ -48,7 +48,13 @@ public class PersistanceMessageConsumer {
 					if (message instanceof TextMessage) {
 
 						TextMessage textMessage = (TextMessage) message;
-						System.out.println("Couche persistance dit: Received message from metier");
+						System.out.println("Couche persistance dit: Received message from metier \n");
+						try {
+							System.out.println(textMessage.getText());
+						} catch (JMSException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 					}
 				}
 			};

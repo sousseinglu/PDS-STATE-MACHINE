@@ -1,9 +1,6 @@
 package metier;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -17,10 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ControllerStateMachineCreation extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private String idCorrel = null;
-    private String message = null;
-    private Map<String, String> messageList = new HashMap<String,String>();	
-		
+   
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -29,39 +23,30 @@ public class ControllerStateMachineCreation extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    public void setIdCorrelation(String idCorrel){
-    	this.idCorrel = idCorrel;
-    }
-    public void setMessage(String message){
-    	this.message = message;
-    	//new ControllerXml().validateAndDecod("presentation" , message);
-    	new ControllerXml().encodeXml(message);
-    }
+   
 	/**
 	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected synchronized void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//System.out.println("hello");
 		// TODO Auto-generated method stub
 		//String from  = request.getParameter("from");
+		String idCorrel  = request.getParameter("idCorrel");
 		
-		String from = "presentation";
-		
-		
-		messageList.put(idCorrel, message);
+		Map<String, String> messageList = ControllerStoreMessages.getMessages();
 		if(!messageList.isEmpty()){
 			for(Entry<String, String> entry : messageList.entrySet()) {
 			    String cle = entry.getKey();
 			    String valeur = entry.getValue();
 			    if(idCorrel.equals(cle)){
-			    	//new ControllerXml().validateAndDecod(from , valeur);
+			    	new ControllerXml().decodeAndSendXML("presentation", cle);
 			    	
 			    	//todo call rmi method to create state machine
 			    }
 			    
 			}
 		}
-		
-		
-	}
+	}	
+	
 
 }

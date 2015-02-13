@@ -67,11 +67,9 @@ public class ViewMessageSubscriber extends HttpServlet {
                         System.out.println("Couche metier dit: Received message from presentation");
                         
                         //send message to couche persistance 
-                       new metier.ControllerPublisher().sendMessage("persistance", textMessage.getText());
-                        
-                       /*ControllerStateMachineCreation sm = new ControllerStateMachineCreation(); 
-                        sm.setIdCorrelation(message.getJMSCorrelationID());
-                        sm.setMessage(textMessage.getText());*/
+                       //new metier.ControllerPublisher().sendMessage("persistance", textMessage.getText());
+                       ControllerStoreMessages.setMessage(message.getJMSCorrelationID(), ((TextMessage) message).getText());
+                      
                         
                          
                     }
