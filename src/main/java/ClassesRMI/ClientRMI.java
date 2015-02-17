@@ -13,12 +13,11 @@ public class ClientRMI {
 	public void createStateMachine(String idCorrel){
 		
 		try {
-			Registry registry = LocateRegistry.getRegistry(10000);
+			Registry registry = LocateRegistry.getRegistry("localhost",10000);
+			if (System.getSecurityManager() == null) {
+		        System.setSecurityManager(new SecurityManager());
+		    }
 			StateMachineDAODistante stateMachine = (StateMachineDAODistante) registry.lookup("StateMachine");
-			if (System.getSecurityManager() == null){
-		    System.setSecurityManager(new RMISecurityManager());
-			}
-			//StateMachineDAODistante stateMachine = (StateMachineDAODistante) Naming.lookup("");
 			stateMachine.createStateMachine(idCorrel);
 			System.out.println("request StateMachine creation sent to persistance via rmi");
 		} catch (RemoteException e) {

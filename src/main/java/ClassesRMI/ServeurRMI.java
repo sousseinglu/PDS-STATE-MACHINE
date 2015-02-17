@@ -13,11 +13,15 @@ public class ServeurRMI {
 			StateMachineDAOExportee statem = new StateMachineDAOExportee();
 			// Puis on enregistre le service associé à la base dans le registry, sous le nom "Base",
 			// pour que les clients puissent le trouver.
+			
 			Registry registry = LocateRegistry.createRegistry(10000);
+			//registry = LocateRegistry.getRegistry();
+			if (System.getSecurityManager() == null) {
+		        System.setSecurityManager(new SecurityManager());
+		    }
 			registry.rebind("StateMachine", statem);
-			if (System.getSecurityManager() == null){
-		    System.setSecurityManager(new RMISecurityManager());
-			}
+			System.out.println("Server RMI started");
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
