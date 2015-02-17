@@ -57,7 +57,7 @@ public class ControllerXml {
 				
 				public void run() {
 					// TODO Auto-generated method stub
-					new RMI.ClientRMI().createStateMachine(idCorell);
+					new ClassesRMI.ClientRMI().createStateMachine(idCorell);
 				}
 			});
 			stateMachineCreationTask.start();
