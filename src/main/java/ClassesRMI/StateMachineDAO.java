@@ -36,9 +36,10 @@ public class StateMachineDAO {
 		   Connection cx = null;
 	       PreparedStatement st = null;
 	       ResultSet rs = null;
-	       
+	       System.out.println("Test");
 	       try {
 	    	   ModelConnexionDAO cd = new ModelConnexionDAO();
+	    	   
 	           cx = cd.getConnexion();
 	           String requete = "insert into machine_a_etat(nomMachine_a_etat, utilisateur) values (?,?)";
 	           Statement statement = cx.createStatement();
