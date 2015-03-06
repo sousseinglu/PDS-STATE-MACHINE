@@ -39,7 +39,7 @@ public class ControllerStateMachineCreation extends HttpServlet {
 			    String cle = entry.getKey();
 			    String valeur = entry.getValue();
 			    if(idCorrel.equals(cle)){
-			    	new ControllerXml().decodeAndSendXML("presentation", cle);
+			    	new ControllerXml().decodeAndSendXML("presentation", valeur, "createStateMachine" , cle);
 			    	
 			    	//todo call rmi method to create state machine
 			    }
