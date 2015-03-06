@@ -21,6 +21,12 @@
   	<description></description>
   	<servlet-class>metier.TestProducerPresentation</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>SsoManager</servlet-name>
+  	<display-name>SsoManager</display-name>
+  	<description></description>
+  	<servlet-class>metier.sso.SsoManager</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>StateMachineCreation</servlet-name>
   	<url-pattern>/ControllerStateMachineCreation</url-pattern>
@@ -28,6 +34,10 @@
   <servlet-mapping>
   	<servlet-name>TestProducerPresentation</servlet-name>
   	<url-pattern>/TestProducerPresentation</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>SsoManager</servlet-name>
+  	<url-pattern>/SsoManager</url-pattern>
   </servlet-mapping>
 
 
