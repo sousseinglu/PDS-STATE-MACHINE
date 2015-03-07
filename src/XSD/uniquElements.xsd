@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.machineAetat.org/uniquElements" 
+			elementFormDefault="qualified" 
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+			xmlns="http://www.machineAetat.org/uniquElements">
+			
+ <xsd:annotation>
+	<xsd:documentation>
+		unique elements for all messages
+	</xsd:documentation>
+ </xsd:annotation>
+ <xsd:simpleType name="layers">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="View"/>
+            <xsd:enumeration value="Controller"/>
+            <xsd:enumeration value="Model"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="request">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string"/>
+            <xsd:element name="tokenid" type="xsd:string"/>
+            <xsd:element name="source" type="layers"/>
+            <xsd:element name="destination" type="layers"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="response">
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string"/>
+            <xsd:element name="source" type="layers"/>
+            <xsd:element name="destination" type="layers"/>
+            <xsd:element name="status" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+		
+</xsd:schema>
