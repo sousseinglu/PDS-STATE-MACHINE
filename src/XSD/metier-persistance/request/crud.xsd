@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.machineAetat.org/crud" 
+			elementFormDefault="qualified" xmlns:scxml="http://www.machineAetat.org/2005/07/scxml" xmlns:ue="http://www.machineAetat.org/uniquElements" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.machineAetat.org/crud">
+	<xsd:import schemaLocation="../../scxml.xsd" namespace="http://www.machineAetat.org/2005/07/scxml"></xsd:import>
+	<xsd:import schemaLocation="../../uniquElements.xsd" namespace="http://www.machineAetat.org/uniquElements"></xsd:import>
+	 
+	<xsd:complexType name="Create">
+        <xsd:complexContent>
+            <xsd:extension base="ue:request">
+                <xsd:sequence>
+                    <xsd:element name="AddStateMachine" type="scxml:ScxmlType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="Read">
+        <xsd:complexContent>
+            <xsd:extension base="ue:request">
+                <xsd:sequence>
+                    <xsd:element name="ReadStateMachine" type="scxml:ScxmlType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+
+	<xsd:complexType name="Update">
+        <xsd:complexContent>
+            <xsd:extension base="ue:request">
+                <xsd:sequence>
+                    <xsd:element name="UpdateStateMachine" type="scxml:ScxmlType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+    <xsd:complexType name="Delete">
+        <xsd:complexContent>
+            <xsd:extension base="ue:request">
+                <xsd:sequence>
+                    <xsd:element name="DeleteStateMachine" type="scxml:ScxmlType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

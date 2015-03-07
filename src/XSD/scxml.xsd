@@ -1,88 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<<<<<<< HEAD:src/XSD/SCXML.xsd
 <xsd:schema targetNamespace="http://www.machineAetat.org/2005/07/scxml"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns="http://www.machineAetat.org/2005/07/scxml" xmlns:pref="http://www.w3.org/2005/07/scxml">
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns="http://www.machineAetat.org/2005/07/scxml" 
+		xmlns:pref="http://www.w3.org/2005/07/scxml">
 
-
-	<xsd:import schemaLocation="http://www.w3.org/2011/04/SCXML/scxml.xsd" namespace="http://www.w3.org/2005/07/scxml"></xsd:import>
-	<xsd:element name="scxml">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="datamodel" minOccurs="0"
-					maxOccurs="1" />
-				<xsd:element ref="state" minOccurs="1"
-					maxOccurs="unbounded" />
-			</xsd:sequence>
-			<xsd:attribute name="version" type="xsd:string" fixed="1.0" />
-			<xsd:attribute name="initialstate" type="xsd:IDREF"
-				use="required" />
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="datamodel">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="data" minOccurs="0"
-					maxOccurs="unbounded" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="data">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:any processContents="lax" minOccurs="0"
-					maxOccurs="unbounded" />
-			</xsd:sequence>
-			<xsd:attribute name="src" type="xsd:anyURI" />
-			<xsd:attribute name="expr" type="xsd:string" />
-			<xsd:attribute name="id" type="xsd:ID" use="required" />
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="state">
-		<xsd:complexType>
-			<xsd:choice minOccurs="0" maxOccurs="unbounded">
-				<xsd:element ref="onentry" minOccurs="0" maxOccurs="1" />
-				<xsd:element ref="invoke" minOccurs="0" maxOccurs="1" />
-				<xsd:element ref="transition" minOccurs="0" />
-				<xsd:element ref="initial" minOccurs="0" maxOccurs="1" />
-				<xsd:element ref="state" minOccurs="0" />
-				<xsd:element ref="history" minOccurs="0" />
-				<xsd:element ref="parallel" minOccurs="0" maxOccurs="1" />
-				<xsd:element ref="onexit" minOccurs="0" maxOccurs="1" />
-				<xsd:element ref="datamodel" minOccurs="0"
-					maxOccurs="1" />
-			</xsd:choice>
-
-			<xsd:attribute name="id" type="xsd:ID" use="optional" />
-			<xsd:attribute name="initial" type="xsd:IDREFS" />
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="initial">
-		<xsd:complexType>
-			<xsd:sequence>
-=======
-<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/2005/07/scxml"
- xmlns="http://www.w3.org/2005/07/scxml">
+ <xsd:import schemaLocation="http://www.w3.org/2011/04/SCXML/scxml.xsd" namespace="http://www.w3.org/2005/07/scxml"></xsd:import>
  
- <xsd:element name="scxml">
-  <xsd:complexType>
+ <xsd:element name="scxml" type="ScxmlType">
+	
+ </xsd:element>
+ <xsd:complexType name="ScxmlType">
   	<xsd:sequence>
   		<xsd:element ref="datamodel" minOccurs="0" maxOccurs="1" />
   		<xsd:element ref="state" minOccurs="1" maxOccurs="unbounded" />
-		<xsd:element ref="user" minOccurs="1" maxOccurs="unbounded" />
-  		
   	</xsd:sequence>
   	<xsd:attribute name="version" type="xsd:string" fixed="1.0" />
   	<xsd:attribute name="initialstate" type="xsd:IDREF" use="required" />
   	<xsd:attribute name="stateMachineName" type="xsd:string"></xsd:attribute>
-  	<xsd:attribute name="userId" type="xsd:IDREF" use="required"></xsd:attribute>
-  </xsd:complexType>
- </xsd:element>
- 
+    </xsd:complexType>
+
  <xsd:element name="datamodel">
   <xsd:complexType>
    <xsd:sequence>
@@ -125,12 +61,11 @@
  <xsd:element name="initial">
   <xsd:complexType>
    <xsd:sequence>
->>>>>>> 66635a636455889c11e053e4cb625d2d4590683d:src/XSD/SCXML_presentation.xsd
-				<xsd:element ref="transition" minOccurs="1" />
+			<xsd:element ref="transition" minOccurs="1" />
 			</xsd:sequence>
 			<xsd:attribute name="id" type="xsd:ID" use="optional" />
 			<xsd:attribute name="src" type="xsd:anyURI" />
-		</xsd:complexType>
+   </xsd:complexType>
 	</xsd:element>
 	<xsd:element name="onentry">
 		<xsd:complexType>
@@ -309,10 +244,6 @@
 		</xsd:restriction>
 	</xsd:simpleType>
 
-<xsd:element name="user">
-  <xsd:complexType>   
-   <xsd:attribute name="id" type="xsd:ID" use="required" />
-   <xsd:attribute name="password" type="xsd:string" use="required" />  
-  </xsd:complexType>
- </xsd:element>
+
+    
 </xsd:schema>
