@@ -22,7 +22,7 @@
         <xsd:complexContent>
             <xsd:extension base="ue:response">
                 <xsd:sequence>
-                    <xsd:element name="ReadStateMachine" type="scxml:ScxmlType"/>
+                    <xsd:element name="readStateMachine" type="scxml:ScxmlType"/>
                 </xsd:sequence>
             </xsd:extension>
         </xsd:complexContent>

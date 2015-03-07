@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.machineAetat.org/update" 
+			elementFormDefault="qualified" xmlns:scxml="http://www.machineAetat.org/2005/07/scxml" xmlns:ue="http://www.machineAetat.org/uniquElements" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.machineAetat.org/update">
+			
+	<xsd:import schemaLocation="../../scxml.xsd" namespace="http://www.machineAetat.org/2005/07/scxml"></xsd:import>
+	<xsd:import schemaLocation="../../uniquElements.xsd" namespace="http://www.machineAetat.org/uniquElements"></xsd:import>
+	 
+	
+	<xsd:complexType name="Update">
+        <xsd:complexContent>
+            <xsd:extension base="ue:request">
+                <xsd:sequence>
+                    <xsd:element name="updateStateMachine" type="scxml:ScxmlType"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    
+	<xsd:element name="update" type="Update"></xsd:element>
+</xsd:schema>
